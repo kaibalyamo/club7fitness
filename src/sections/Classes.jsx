@@ -168,7 +168,7 @@ const Classes = () => {
   return (
     <section 
       id="classes"
-      className="relative py-24 md:py-32 px-6 md:px-12 bg-club-dark"
+      className="relative py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-12 bg-club-dark"
       style={{
         backgroundImage: `url(${getImagePath('assets/images/classes-bg.png')})`,
         backgroundSize: 'cover',

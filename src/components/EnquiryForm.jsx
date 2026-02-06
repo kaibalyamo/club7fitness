@@ -178,7 +178,7 @@ _I'm interested in joining Club 7 Fitness!_`
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4"
             onClick={onClose}
           >
             {/* Modal */}
@@ -187,7 +187,7 @@ _I'm interested in joining Club 7 Fitness!_`
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 50 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="relative bg-club-charcoal border border-club-blue/30 rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+              className="relative bg-club-charcoal border border-club-blue/30 rounded-lg shadow-2xl max-w-4xl w-full mx-2 sm:mx-4 max-h-[90vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
               style={{
                 boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(59, 130, 246, 0.2)',
@@ -207,7 +207,7 @@ _I'm interested in joining Club 7 Fitness!_`
               </motion.button>
 
               {/* Form Content */}
-              <Box sx={{ p: 4 }}>
+              <Box sx={{ p: { xs: 2, sm: 3, md: 4 } }}>
                 {/* Header */}
                 <motion.div
                   initial={{ opacity: 0, y: -20 }}
@@ -222,6 +222,7 @@ _I'm interested in joining Club 7 Fitness!_`
                       fontWeight: 800,
                       fontFamily: 'Montserrat, sans-serif',
                       mb: 1,
+                      fontSize: { xs: '1.5rem', sm: '2rem', md: '2.125rem' },
                     }}
                   >
                     Start Your <span style={{ color: '#3b82f6' }}>Journey</span>
@@ -231,6 +232,7 @@ _I'm interested in joining Club 7 Fitness!_`
                     sx={{
                       color: '#94a3b8',
                       fontFamily: 'Poppins, sans-serif',
+                      fontSize: { xs: '0.75rem', sm: '0.875rem' },
                     }}
                   >
                     Fill in your details and we'll connect you with our team
@@ -304,7 +306,7 @@ _I'm interested in joining Club 7 Fitness!_`
                       </FormLabel>
                       <div className="flex flex-col gap-4">
                         {/* First Row */}
-                        <div className="grid grid-cols-4 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                           {personalTrainingOptions.slice(0, 4).map((option) => (
                             <FormControlLabel
                               key={option.id}
@@ -332,7 +334,7 @@ _I'm interested in joining Club 7 Fitness!_`
                                   onClick={() => handleProgramChange(option.id)}
                                 >
                                   {/* Image */}
-                                  <div className="relative h-40 mb-2 rounded-lg overflow-hidden">
+                                  <div className="relative h-32 sm:h-36 md:h-40 mb-2 rounded-lg overflow-hidden">
                                     <img
                                       src={getImagePath(option.image)}
                                       alt={option.label}
@@ -340,12 +342,12 @@ _I'm interested in joining Club 7 Fitness!_`
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
                                     <div className="absolute bottom-2 left-2 right-2">
-                                      <div className="font-bold text-white text-sm">{option.label}</div>
+                                      <div className="font-bold text-white text-xs sm:text-sm md:text-base">{option.label}</div>
                                       <div className="text-xs text-club-steel">{option.description}</div>
                                     </div>
                                   </div>
                                   {/* Details */}
-                                  <div className="text-xs text-club-steel leading-relaxed line-clamp-3">
+                                  <div className="text-xs sm:text-sm text-club-steel leading-relaxed line-clamp-2 sm:line-clamp-3">
                                     {option.details}
                                   </div>
                                 </motion.div>
@@ -371,7 +373,7 @@ _I'm interested in joining Club 7 Fitness!_`
                           ))}
                         </div>
                         {/* Second Row */}
-                        <div className="grid grid-cols-4 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                           {personalTrainingOptions.slice(4, 8).map((option) => (
                             <FormControlLabel
                               key={option.id}
@@ -399,7 +401,7 @@ _I'm interested in joining Club 7 Fitness!_`
                                   onClick={() => handleProgramChange(option.id)}
                                 >
                                   {/* Image */}
-                                  <div className="relative h-40 mb-2 rounded-lg overflow-hidden">
+                                  <div className="relative h-32 sm:h-36 md:h-40 mb-2 rounded-lg overflow-hidden">
                                     <img
                                       src={getImagePath(option.image)}
                                       alt={option.label}
@@ -407,12 +409,12 @@ _I'm interested in joining Club 7 Fitness!_`
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
                                     <div className="absolute bottom-2 left-2 right-2">
-                                      <div className="font-bold text-white text-sm">{option.label}</div>
+                                      <div className="font-bold text-white text-xs sm:text-sm md:text-base">{option.label}</div>
                                       <div className="text-xs text-club-steel">{option.description}</div>
                                     </div>
                                   </div>
                                   {/* Details */}
-                                  <div className="text-xs text-club-steel leading-relaxed line-clamp-3">
+                                  <div className="text-xs sm:text-sm text-club-steel leading-relaxed line-clamp-2 sm:line-clamp-3">
                                     {option.details}
                                   </div>
                                 </motion.div>
@@ -500,8 +502,8 @@ _I'm interested in joining Club 7 Fitness!_`
                       size="large"
                       startIcon={<Send size={20} />}
                       sx={{
-                        py: 1.5,
-                        fontSize: '1.1rem',
+                        py: { xs: 1.25, sm: 1.5 },
+                        fontSize: { xs: '0.9rem', sm: '1rem', md: '1.1rem' },
                         fontWeight: 600,
                         textTransform: 'none',
                         borderRadius: '8px',
@@ -515,7 +517,8 @@ _I'm interested in joining Club 7 Fitness!_`
                         transition: 'all 0.3s ease',
                       }}
                     >
-                      Send Enquiry via WhatsApp
+                      <span className="hidden sm:inline">Send Enquiry via WhatsApp</span>
+                      <span className="sm:hidden">Send via WhatsApp</span>
                     </Button>
                   </motion.div>
                 </form>

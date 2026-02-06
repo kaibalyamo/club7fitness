@@ -127,7 +127,7 @@ const Instagram = () => {
   }, [])
 
   return (
-    <section className="relative py-24 md:py-32 px-6 md:px-12 bg-club-charcoal">
+        <section className="relative py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-12 bg-club-charcoal">
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
         <motion.div

@@ -92,7 +92,7 @@ const Hero = () => {
       </div>
 
       {/* Text Content Below Video */}
-      <div className="relative bg-club-dark py-24 md:py-32 px-6 md:px-12">
+      <div className="relative bg-club-dark py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-12">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 50 }}

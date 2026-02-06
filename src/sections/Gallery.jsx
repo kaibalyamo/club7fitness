@@ -162,18 +162,18 @@ const Gallery = () => {
   }
 
   return (
-    <section id="gallery" className="relative py-24 md:py-32 px-6 md:px-12 bg-club-dark">
-      <div className="max-w-7xl mx-auto">
-        {/* Section header */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center mb-16 md:mb-20"
-        >
-          <motion.h2 
-            className="text-4xl md:text-6xl font-black mb-4 font-display"
+        <section id="gallery" className="relative py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-12 bg-club-dark">
+          <div className="max-w-7xl mx-auto">
+            {/* Section header */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="text-center mb-12 sm:mb-16 md:mb-20"
+            >
+              <motion.h2
+                className="text-3xl sm:text-4xl md:text-6xl font-black mb-4 font-display"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}

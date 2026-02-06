@@ -70,7 +70,7 @@ const ClassCard = ({ classItem, index, scrollX, containerRef }) => {
   return (
     <motion.li
       ref={cardRef}
-      className="scrollbar-item flex-shrink-0 w-[416px] list-none snap-start"
+      className="scrollbar-item flex-shrink-0 w-[calc(100vw-64px)] sm:w-[calc(50vw-48px)] md:w-[416px] list-none snap-start"
       style={{
         scrollSnapAlign: 'start',
       }}
@@ -160,7 +160,7 @@ const Programs = () => {
   }, [])
 
   return (
-    <section id="programs" className="relative py-24 md:py-32 px-6 md:px-12 bg-club-dark">
+    <section id="programs" className="relative py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-12 bg-club-dark">
       <Container maxWidth="lg" className="container">
         {/* Section Subtitle */}
         <motion.p
@@ -189,12 +189,12 @@ const Programs = () => {
         <div className="w-full flex justify-center">
           <div 
             ref={containerRef}
-            className="overflow-x-auto pb-4"
+            className="overflow-x-auto pb-4 md:max-w-[calc(416px*2+32px)]"
             style={{
               scrollbarWidth: 'thin',
               scrollbarColor: '#3b82f6 #0f172a',
               width: '100%',
-              maxWidth: 'calc(416px * 2 + 32px)', // Exactly 2 cards + gap
+              maxWidth: 'calc(100vw - 48px)', // Mobile responsive
             }}
           >
             <motion.ul

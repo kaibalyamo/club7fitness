@@ -21,8 +21,8 @@ const Footer = () => {
       {/* Overlay */}
       <div className="absolute inset-0 bg-club-charcoal/95"></div>
       
-      <div className="relative max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-20 z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-16">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-12 sm:py-16 md:py-20 z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12 mb-12 sm:mb-16">
           {/* Brand - Left Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}

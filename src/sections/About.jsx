@@ -9,7 +9,7 @@ const About = () => {
   const [isFormOpen, setIsFormOpen] = useState(false)
 
   return (
-    <section id="about" className="relative py-24 md:py-32 px-6 md:px-12 bg-club-dark overflow-hidden">
+    <section id="about" className="relative py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-12 bg-club-dark overflow-hidden">
       <Container maxWidth="lg" className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left side - Banner with images */}
