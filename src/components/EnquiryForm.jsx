@@ -150,7 +150,7 @@ _I'm interested in joining Club 7 Fitness!_`
 
     // Encode message for WhatsApp URL
     const encodedMessage = encodeURIComponent(whatsappMessage)
-    const phoneNumber = '9170008310868' // WhatsApp number without + or spaces
+    const phoneNumber = '917008310868' // WhatsApp number without + or spaces
     
     // Open WhatsApp
     window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank')
