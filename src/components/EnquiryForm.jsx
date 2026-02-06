@@ -2,23 +2,70 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button, TextField, RadioGroup, FormControlLabel, Radio, FormControl, FormLabel, Box, Typography } from '@mui/material'
 import { X, Send } from 'lucide-react'
+import { getImagePath } from '../utils/imagePath'
 
 const personalTrainingOptions = [
-  { id: 'strength', label: 'Strength Training', description: 'Build muscle and power' },
-  { id: 'cardio', label: 'Cardio Conditioning', description: 'Improve endurance and heart health' },
-  { id: 'functional', label: 'Functional Fitness', description: 'Real-world movement patterns' },
-  { id: 'weightloss', label: 'Weight Loss Program', description: 'Customized fat loss plan' },
-  { id: 'bodybuilding', label: 'Bodybuilding', description: 'Competition-ready physique' },
-  { id: 'yoga', label: 'Yoga & Flexibility', description: 'Mind-body connection' },
-  { id: 'hiit', label: 'HIIT Training', description: 'High-intensity interval training' },
-  { id: 'nutrition', label: 'Nutrition Coaching', description: 'Diet and meal planning' },
+  { 
+    id: 'strength', 
+    label: 'Strength Training', 
+    description: 'Build muscle and power',
+    details: 'Transform your physique with our comprehensive strength training program. Focus on progressive overload, proper form, and muscle development. Perfect for building lean muscle mass and increasing overall strength.',
+    image: '/assets/images/class-1.jpg'
+  },
+  { 
+    id: 'cardio', 
+    label: 'Cardio Conditioning', 
+    description: 'Improve endurance and heart health',
+    details: 'Boost your cardiovascular health with our dynamic cardio conditioning program. Includes running, cycling, rowing, and HIIT sessions designed to improve stamina, burn calories, and enhance heart health.',
+    image: '/assets/images/class-2.jpg'
+  },
+  { 
+    id: 'functional', 
+    label: 'Functional Fitness', 
+    description: 'Real-world movement patterns',
+    details: 'Train movements, not just muscles. Our functional fitness program focuses on exercises that mimic daily activities, improving balance, coordination, and overall movement quality. Perfect for injury prevention and enhanced mobility.',
+    image: '/assets/images/class-3.jpg'
+  },
+  { 
+    id: 'weightloss', 
+    label: 'Weight Loss Program', 
+    description: 'Customized fat loss plan',
+    details: 'Achieve sustainable weight loss with our personalized program combining effective workouts and nutrition guidance. Our trainers will create a customized plan tailored to your goals, metabolism, and lifestyle for long-term success.',
+    image: '/assets/images/class-4.jpg'
+  },
+  { 
+    id: 'bodybuilding', 
+    label: 'Bodybuilding', 
+    description: 'Competition-ready physique',
+    details: 'Take your physique to the next level with our advanced bodybuilding program. Learn proper training splits, nutrition strategies, and posing techniques. Whether you\'re preparing for competition or just want to look your absolute best.',
+    image: '/assets/images/about-banner.png'
+  },
+  { 
+    id: 'yoga', 
+    label: 'Yoga & Flexibility', 
+    description: 'Mind-body connection',
+    details: 'Find balance and inner strength through our yoga and flexibility program. Improve flexibility, reduce stress, enhance mindfulness, and build core strength. Suitable for all levels, from beginners to advanced practitioners.',
+    image: '/assets/images/class-3.jpg'
+  },
+  { 
+    id: 'hiit', 
+    label: 'HIIT Training', 
+    description: 'High-intensity interval training',
+    details: 'Maximize your results in minimal time with our HIIT training program. High-intensity intervals followed by short recovery periods help you burn more calories, improve cardiovascular fitness, and build endurance faster than traditional workouts.',
+    image: '/assets/images/class-4.jpg'
+  },
+  { 
+    id: 'nutrition', 
+    label: 'Nutrition Coaching', 
+    description: 'Diet and meal planning',
+    details: 'Fuel your body for optimal performance with our comprehensive nutrition coaching. Get personalized meal plans, macro calculations, supplement guidance, and ongoing support to help you reach your fitness goals through proper nutrition.',
+    image: '/assets/images/about-coach.jpg'
+  },
 ]
 
 const EnquiryForm = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
     name: '',
-    phone: '',
-    email: '',
     trainingProgram: '',
     message: '',
   })
@@ -47,21 +94,6 @@ const EnquiryForm = ({ isOpen, onClose }) => {
       newErrors.name = 'Name is required'
     }
     
-    if (!formData.phone.trim()) {
-      newErrors.phone = 'Phone number is required'
-    } else {
-      const cleanedPhone = formData.phone.replace(/\s/g, '').replace(/[^0-9]/g, '')
-      if (cleanedPhone.length < 10) {
-        newErrors.phone = 'Please enter a valid phone number (minimum 10 digits)'
-      }
-    }
-    
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required'
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email address'
-    }
-    
     if (!formData.trainingProgram) {
       newErrors.trainingProgram = 'Please select a training program'
     }
@@ -82,9 +114,8 @@ const EnquiryForm = ({ isOpen, onClose }) => {
     const whatsappMessage = `*New Enquiry - Club 7 Fitness*
 
 *Name:* ${formData.name}
-*Phone:* ${formData.phone}
-*Email:* ${formData.email}
 *Training Program:* ${selectedProgram ? selectedProgram.label : formData.trainingProgram}
+${selectedProgram ? `*Program Details:* ${selectedProgram.details}` : ''}
 ${formData.message ? `*Message:* ${formData.message}` : ''}
 
 _I'm interested in joining Club 7 Fitness!_`
@@ -99,8 +130,6 @@ _I'm interested in joining Club 7 Fitness!_`
     // Reset form
     setFormData({
       name: '',
-      phone: '',
-      email: '',
       trainingProgram: '',
       message: '',
     })
@@ -130,7 +159,7 @@ _I'm interested in joining Club 7 Fitness!_`
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 50 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="relative bg-club-charcoal border border-club-blue/30 rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+              className="relative bg-club-charcoal border border-club-blue/30 rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
               style={{
                 boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(59, 130, 246, 0.2)',
@@ -221,91 +250,11 @@ _I'm interested in joining Club 7 Fitness!_`
                     />
                   </motion.div>
 
-                  {/* Phone Field */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 }}
-                    className="mb-4"
-                  >
-                    <TextField
-                      fullWidth
-                      label="Phone Number"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      error={!!errors.phone}
-                      helperText={errors.phone}
-                      required
-                      placeholder="Enter your phone number"
-                      sx={{
-                        '& .MuiOutlinedInput-root': {
-                          color: '#ffffff',
-                          '& fieldset': {
-                            borderColor: 'rgba(59, 130, 246, 0.3)',
-                          },
-                          '&:hover fieldset': {
-                            borderColor: 'rgba(59, 130, 246, 0.5)',
-                          },
-                          '&.Mui-focused fieldset': {
-                            borderColor: '#3b82f6',
-                          },
-                        },
-                        '& .MuiInputLabel-root': {
-                          color: '#94a3b8',
-                        },
-                        '& .MuiInputLabel-root.Mui-focused': {
-                          color: '#3b82f6',
-                        },
-                      }}
-                    />
-                  </motion.div>
-
-                  {/* Email Field */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 }}
-                    className="mb-4"
-                  >
-                    <TextField
-                      fullWidth
-                      label="Email Address"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      error={!!errors.email}
-                      helperText={errors.email}
-                      required
-                      sx={{
-                        '& .MuiOutlinedInput-root': {
-                          color: '#ffffff',
-                          '& fieldset': {
-                            borderColor: 'rgba(59, 130, 246, 0.3)',
-                          },
-                          '&:hover fieldset': {
-                            borderColor: 'rgba(59, 130, 246, 0.5)',
-                          },
-                          '&.Mui-focused fieldset': {
-                            borderColor: '#3b82f6',
-                          },
-                        },
-                        '& .MuiInputLabel-root': {
-                          color: '#94a3b8',
-                        },
-                        '& .MuiInputLabel-root.Mui-focused': {
-                          color: '#3b82f6',
-                        },
-                      }}
-                    />
-                  </motion.div>
-
                   {/* Training Program Selection */}
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 }}
+                    transition={{ delay: 0.3 }}
                     className="mb-4"
                   >
                     <FormControl
@@ -333,6 +282,7 @@ _I'm interested in joining Club 7 Fitness!_`
                           '& .MuiFormControlLabel-label': {
                             color: '#ffffff',
                             fontFamily: 'Poppins, sans-serif',
+                            width: '100%',
                           },
                           '& .MuiRadio-root': {
                             color: 'rgba(59, 130, 246, 0.5)',
@@ -342,29 +292,53 @@ _I'm interested in joining Club 7 Fitness!_`
                           },
                         }}
                       >
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           {personalTrainingOptions.map((option) => (
                             <FormControlLabel
                               key={option.id}
                               value={option.id}
-                              control={<Radio />}
+                              control={<Radio sx={{ position: 'absolute', top: 12, right: 12, zIndex: 2 }} />}
                               label={
-                                <div>
-                                  <div className="font-semibold">{option.label}</div>
-                                  <div className="text-xs text-club-steel">{option.description}</div>
-                                </div>
+                                <motion.div
+                                  className="relative w-full"
+                                  whileHover={{ scale: 1.02 }}
+                                  transition={{ duration: 0.2 }}
+                                >
+                                  {/* Image */}
+                                  <div className="relative h-32 mb-3 rounded-lg overflow-hidden">
+                                    <img
+                                      src={getImagePath(option.image)}
+                                      alt={option.label}
+                                      className="w-full h-full object-cover"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                                    <div className="absolute bottom-2 left-3 right-3">
+                                      <div className="font-bold text-white text-lg">{option.label}</div>
+                                      <div className="text-xs text-club-steel">{option.description}</div>
+                                    </div>
+                                  </div>
+                                  {/* Details */}
+                                  <div className="text-sm text-club-steel leading-relaxed px-1">
+                                    {option.details}
+                                  </div>
+                                </motion.div>
                               }
                               sx={{
                                 border: formData.trainingProgram === option.id
                                   ? '2px solid #3b82f6'
                                   : '2px solid rgba(59, 130, 246, 0.2)',
-                                borderRadius: '8px',
-                                p: 1.5,
+                                borderRadius: '12px',
+                                p: 2,
                                 m: 0,
+                                position: 'relative',
+                                backgroundColor: formData.trainingProgram === option.id
+                                  ? 'rgba(59, 130, 246, 0.1)'
+                                  : 'rgba(26, 26, 26, 0.5)',
                                 '&:hover': {
                                   borderColor: '#3b82f6',
-                                  backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                                  backgroundColor: 'rgba(59, 130, 246, 0.15)',
                                 },
+                                transition: 'all 0.3s ease',
                               }}
                             />
                           ))}
@@ -385,7 +359,7 @@ _I'm interested in joining Club 7 Fitness!_`
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.6 }}
+                    transition={{ delay: 0.4 }}
                     className="mb-6"
                   >
                     <TextField
@@ -423,7 +397,7 @@ _I'm interested in joining Club 7 Fitness!_`
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.7 }}
+                    transition={{ delay: 0.5 }}
                   >
                     <Button
                       type="submit"
