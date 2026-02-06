@@ -11,7 +11,7 @@ const classes = [
     image: getImagePath('assets/images/class-1.jpg'),
     icon: getImagePath('assets/images/class-icon-1.png'),
     time: '6:00 AM - 7:00 AM',
-    trainer: 'Marcus Chen'
+    trainer: 'Sanaya Singh'
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const classes = [
     image: getImagePath('assets/images/class-2.jpg'),
     icon: getImagePath('assets/images/class-icon-2.png'),
     time: '7:00 AM - 8:00 AM',
-    trainer: 'Sarah Mitchell'
+    trainer: 'Priyanka Ray'
   },
   {
     id: 3,

@@ -153,7 +153,7 @@ const About = () => {
                 <figure className="coach-avatar">
                   <motion.img
                     src={getImagePath('assets/images/about-coach.jpg')}
-                    alt="Denis Robinson"
+                    alt="Krishna Mohanty"
                     width="65"
                     height="65"
                     loading="lazy"
@@ -164,7 +164,7 @@ const About = () => {
                 </figure>
                 <div>
                   <h3 className="h3 coach-name text-white text-xl font-bold mb-1 font-display">
-                    Denis Robinson
+                    Krishna Mohanty
                   </h3>
                   <p className="coach-title text-club-steel text-sm uppercase tracking-wider">
                     Our Coach
