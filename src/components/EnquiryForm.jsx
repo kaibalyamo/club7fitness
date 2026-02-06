@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Button, TextField, FormControlLabel, Checkbox, FormControl, FormLabel, Box, Typography } from '@mui/material'
+import { Button, TextField, Checkbox, FormControl, FormLabel, Box, Typography } from '@mui/material'
 import { X, Send } from 'lucide-react'
 import { getImagePath } from '../utils/imagePath'
 
