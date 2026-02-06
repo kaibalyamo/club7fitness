@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Button, Typography, Container } from '@mui/material'
 import { fadeInUp, slideInLeft, slideInRight } from '../utils/motionVariants'
+import { getImagePath } from '../utils/imagePath'
 
 const About = () => {
   return (
@@ -18,7 +19,7 @@ const About = () => {
           >
             {/* Main banner image */}
             <motion.img
-              src="/assets/images/about-banner.png"
+              src={getImagePath('assets/images/about-banner.png')}
               alt="About Club 7 Fitness"
               width="660"
               height="648"
@@ -32,7 +33,7 @@ const About = () => {
 
             {/* Circle 1 */}
             <motion.img
-              src="/assets/images/about-circle-one.png"
+              src={getImagePath('assets/images/about-circle-one.png')}
               alt=""
               width="660"
               height="534"
@@ -52,7 +53,7 @@ const About = () => {
 
             {/* Circle 2 */}
             <motion.img
-              src="/assets/images/about-circle-two.png"
+              src={getImagePath('assets/images/about-circle-two.png')}
               alt=""
               width="660"
               height="534"
@@ -73,7 +74,7 @@ const About = () => {
 
             {/* Fitness image - absolute positioned */}
             <motion.img
-              src="/assets/images/fitness.png"
+              src={getImagePath('assets/images/fitness.png')}
               alt="fitness"
               width="650"
               height="154"
@@ -151,7 +152,7 @@ const About = () => {
               <div className="about-coach flex items-center gap-4">
                 <figure className="coach-avatar">
                   <motion.img
-                    src="/assets/images/about-coach.jpg"
+                    src={getImagePath('assets/images/about-coach.jpg')}
                     alt="Denis Robinson"
                     width="65"
                     height="65"

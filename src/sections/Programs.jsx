@@ -2,34 +2,35 @@ import React, { useRef, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Container } from '@mui/material'
 import { staggerContainer } from '../utils/motionVariants'
+import { getImagePath } from '../utils/imagePath'
 
 const classes = [
   {
     id: 1,
     title: 'Weightlifting',
-    image: '/assets/images/class-1.jpg',
-    icon: '/assets/images/class-icon-1.png',
+    image: getImagePath('assets/images/class-1.jpg'),
+    icon: getImagePath('assets/images/class-icon-1.png'),
     description: 'Overcome your limits and reach new heights with our weightlifting program.',
   },
   {
     id: 2,
     title: 'Cardio and Strength',
-    image: '/assets/images/class-2.jpg',
-    icon: '/assets/images/class-icon-2.png',
+    image: getImagePath('assets/images/class-2.jpg'),
+    icon: getImagePath('assets/images/class-icon-2.png'),
     description: 'Transform your fitness and achieve breathtaking health with our cardio program.',
   },
   {
     id: 3,
     title: 'Power Yoga',
-    image: '/assets/images/class-3.jpg',
-    icon: '/assets/images/class-icon-3.png',
+    image: getImagePath('assets/images/class-3.jpg'),
+    icon: getImagePath('assets/images/class-icon-3.png'),
     description: 'Explore the physical, mental and spiritual benefits of yoga on our online platform.',
   },
   {
     id: 4,
     title: 'Fitness Package',
-    image: '/assets/images/class-4.jpg',
-    icon: '/assets/images/class-icon-4.png',
+    image: getImagePath('assets/images/class-4.jpg'),
+    icon: getImagePath('assets/images/class-icon-4.png'),
     description: 'Transform your body and achieve your best form with our complete package for your gym success.',
   }
 ]

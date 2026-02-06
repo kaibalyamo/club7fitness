@@ -2,13 +2,14 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Quote, Star } from 'lucide-react'
 import { staggerContainer, fadeInUp } from '../utils/motionVariants'
+import { getImagePath } from '../utils/imagePath'
 
 const testimonials = [
   {
     id: 1,
     name: 'Ravi Kumar',
     role: 'Bodybuilder & Trainer',
-    image: '/assets/images/about-coach.jpg', // You can replace with Ravi's image
+    image: getImagePath('assets/images/about-coach.jpg'), // You can replace with Ravi's image
     content: 'Club 7 Fitness has transformed my physique completely. The elite equipment and professional coaching helped me achieve my dream body. Best gym in Delhi!',
     rating: 5,
   },
@@ -16,7 +17,7 @@ const testimonials = [
     id: 2,
     name: 'Raj Sharma',
     role: 'Powerlifter',
-    image: '/assets/images/class-1.jpg', // You can replace with Raj's image
+    image: getImagePath('assets/images/class-1.jpg'), // You can replace with Raj's image
     content: 'The training environment here is unmatched. I\'ve broken all my personal records since joining. The coaches understand real strength training.',
     rating: 5,
   },
@@ -24,7 +25,7 @@ const testimonials = [
     id: 3,
     name: 'Aryan Singh',
     role: 'Fitness Enthusiast',
-    image: '/assets/images/class-2.jpg', // You can replace with Aryan's image
+    image: getImagePath('assets/images/class-2.jpg'), // You can replace with Aryan's image
     content: 'From beginner to advanced, Club 7 has everything. The community is supportive and the results speak for themselves. Highly recommended!',
     rating: 5,
   },

@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@mui/material'
 import { ChevronDown } from 'lucide-react'
+import { getImagePath } from '../utils/imagePath'
 
 const Hero = () => {
   // Logo and video stay visible - no fade effects
@@ -45,7 +46,7 @@ const Hero = () => {
         {/* Logo Image prominently displayed over video */}
         <div className="absolute inset-0 flex items-center justify-center z-20">
           <motion.img
-            src="/assets/images/rtyu45mm.png"
+            src={getImagePath('assets/images/rtyu45mm.png')}
             alt="Club 7 Fitness"
             initial={{ opacity: 0, scale: 0.8, y: -20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}

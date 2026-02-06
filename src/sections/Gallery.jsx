@@ -3,16 +3,17 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Box, Typography } from '@mui/material'
 import { X } from 'lucide-react'
 import { staggerContainer, scaleIn } from '../utils/motionVariants'
+import { getImagePath } from '../utils/imagePath'
 
 const galleryImages = [
-  { id: 1, src: '/assets/images/class-1.jpg', title: 'Strength Training' },
-  { id: 2, src: '/assets/images/class-2.jpg', title: 'Cardio Blast' },
-  { id: 3, src: '/assets/images/class-3.jpg', title: 'Yoga & Flexibility' },
-  { id: 4, src: '/assets/images/class-4.jpg', title: 'HIIT Training' },
-  { id: 5, src: '/assets/images/about-banner.png', title: 'Training Facility' },
-  { id: 6, src: '/assets/images/about-coach.jpg', title: 'Expert Coaching' },
-  { id: 7, src: '/assets/images/video-banner.jpg', title: 'Group Sessions' },
-  { id: 8, src: '/assets/images/hero-banner.png', title: 'Elite Equipment' },
+  { id: 1, src: getImagePath('assets/images/class-1.jpg'), title: 'Strength Training' },
+  { id: 2, src: getImagePath('assets/images/class-2.jpg'), title: 'Cardio Blast' },
+  { id: 3, src: getImagePath('assets/images/class-3.jpg'), title: 'Yoga & Flexibility' },
+  { id: 4, src: getImagePath('assets/images/class-4.jpg'), title: 'HIIT Training' },
+  { id: 5, src: getImagePath('assets/images/about-banner.png'), title: 'Training Facility' },
+  { id: 6, src: getImagePath('assets/images/about-coach.jpg'), title: 'Expert Coaching' },
+  { id: 7, src: getImagePath('assets/images/video-banner.jpg'), title: 'Group Sessions' },
+  { id: 8, src: getImagePath('assets/images/hero-banner.png'), title: 'Elite Equipment' },
 ]
 
 const GalleryItem = ({ image, index, onImageClick }) => {

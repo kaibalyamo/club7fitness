@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { getImagePath } from '../utils/imagePath'
 
 /**
  * Club 7 Fitness Logo Component
@@ -13,7 +14,7 @@ const Logo = ({ className = '', size = 'default', showSlogan = false, imageSrc =
   }
 
   // Logo image path
-  const logoPath = imageSrc || '/assets/images/club7-logo.jpeg'
+  const logoPath = imageSrc || getImagePath('assets/images/club7-logo.jpeg')
 
   return (
     <motion.div 

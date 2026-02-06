@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Instagram, Mail, MapPin, Phone } from 'lucide-react'
 import { fadeInUp } from '../utils/motionVariants'
+import { getImagePath } from '../utils/imagePath'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -11,7 +12,7 @@ const Footer = () => {
       id="contact"
       className="relative bg-club-charcoal border-t border-club-steel/10"
       style={{
-        backgroundImage: 'url(/assets/images/footer-bg.png)',
+        backgroundImage: `url(${getImagePath('assets/images/footer-bg.png')})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
@@ -39,7 +40,7 @@ const Footer = () => {
                 className="relative inline-block"
               >
                 <motion.img
-                  src="/assets/images/rtyu45mm.png"
+                  src={getImagePath('assets/images/rtyu45mm.png')}
                   alt="Club 7 Fitness"
                   className="h-28 md:h-36 lg:h-40 w-auto object-contain"
                   whileHover={{ scale: 1.05 }}

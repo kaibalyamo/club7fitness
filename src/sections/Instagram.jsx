@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Instagram as InstagramIcon, ExternalLink, Loader2 } from 'lucide-react'
 import { staggerContainer, scaleIn } from '../utils/motionVariants'
+import { getImagePath } from '../utils/imagePath'
 
 const InstagramPost = ({ post, index }) => {
   return (
@@ -94,12 +95,12 @@ const Instagram = () => {
         // Fallback: Use placeholder images if API fails
         // Replace these with actual Instagram post URLs or use a service
         const fallbackPosts = [
-          { id: 1, image: '/assets/images/class-1.jpg', caption: 'Strength Training', permalink: INSTAGRAM_URL },
-          { id: 2, image: '/assets/images/class-2.jpg', caption: 'Cardio Blast', permalink: INSTAGRAM_URL },
-          { id: 3, image: '/assets/images/class-3.jpg', caption: 'Yoga Session', permalink: INSTAGRAM_URL },
-          { id: 4, image: '/assets/images/class-4.jpg', caption: 'HIIT Workout', permalink: INSTAGRAM_URL },
-          { id: 5, image: '/assets/images/about-banner.png', caption: 'Training Facility', permalink: INSTAGRAM_URL },
-          { id: 6, image: '/assets/images/video-banner.jpg', caption: 'Group Training', permalink: INSTAGRAM_URL },
+          { id: 1, image: getImagePath('assets/images/class-1.jpg'), caption: 'Strength Training', permalink: INSTAGRAM_URL },
+          { id: 2, image: getImagePath('assets/images/class-2.jpg'), caption: 'Cardio Blast', permalink: INSTAGRAM_URL },
+          { id: 3, image: getImagePath('assets/images/class-3.jpg'), caption: 'Yoga Session', permalink: INSTAGRAM_URL },
+          { id: 4, image: getImagePath('assets/images/class-4.jpg'), caption: 'HIIT Workout', permalink: INSTAGRAM_URL },
+          { id: 5, image: getImagePath('assets/images/about-banner.png'), caption: 'Training Facility', permalink: INSTAGRAM_URL },
+          { id: 6, image: getImagePath('assets/images/video-banner.jpg'), caption: 'Group Training', permalink: INSTAGRAM_URL },
         ]
         
         setInstagramPosts(fallbackPosts)
@@ -111,12 +112,12 @@ const Instagram = () => {
         
         // Fallback on error
         const fallbackPosts = [
-          { id: 1, image: '/assets/images/class-1.jpg', caption: 'Strength Training', permalink: INSTAGRAM_URL },
-          { id: 2, image: '/assets/images/class-2.jpg', caption: 'Cardio Blast', permalink: INSTAGRAM_URL },
-          { id: 3, image: '/assets/images/class-3.jpg', caption: 'Yoga Session', permalink: INSTAGRAM_URL },
-          { id: 4, image: '/assets/images/class-4.jpg', caption: 'HIIT Workout', permalink: INSTAGRAM_URL },
-          { id: 5, image: '/assets/images/about-banner.png', caption: 'Training Facility', permalink: INSTAGRAM_URL },
-          { id: 6, image: '/assets/images/video-banner.jpg', caption: 'Group Training', permalink: INSTAGRAM_URL },
+          { id: 1, image: getImagePath('assets/images/class-1.jpg'), caption: 'Strength Training', permalink: INSTAGRAM_URL },
+          { id: 2, image: getImagePath('assets/images/class-2.jpg'), caption: 'Cardio Blast', permalink: INSTAGRAM_URL },
+          { id: 3, image: getImagePath('assets/images/class-3.jpg'), caption: 'Yoga Session', permalink: INSTAGRAM_URL },
+          { id: 4, image: getImagePath('assets/images/class-4.jpg'), caption: 'HIIT Workout', permalink: INSTAGRAM_URL },
+          { id: 5, image: getImagePath('assets/images/about-banner.png'), caption: 'Training Facility', permalink: INSTAGRAM_URL },
+          { id: 6, image: getImagePath('assets/images/video-banner.jpg'), caption: 'Group Training', permalink: INSTAGRAM_URL },
         ]
         setInstagramPosts(fallbackPosts)
       }

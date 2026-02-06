@@ -2,37 +2,38 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Card, CardContent, CardMedia, Typography, Box } from '@mui/material'
 import { staggerContainer, fadeInUp } from '../utils/motionVariants'
+import { getImagePath } from '../utils/imagePath'
 
 const classes = [
   {
     id: 1,
     title: 'Strength Training',
-    image: '/assets/images/class-1.jpg',
-    icon: '/assets/images/class-icon-1.png',
+    image: getImagePath('assets/images/class-1.jpg'),
+    icon: getImagePath('assets/images/class-icon-1.png'),
     time: '6:00 AM - 7:00 AM',
     trainer: 'Marcus Chen'
   },
   {
     id: 2,
     title: 'Cardio Blast',
-    image: '/assets/images/class-2.jpg',
-    icon: '/assets/images/class-icon-2.png',
+    image: getImagePath('assets/images/class-2.jpg'),
+    icon: getImagePath('assets/images/class-icon-2.png'),
     time: '7:00 AM - 8:00 AM',
     trainer: 'Sarah Mitchell'
   },
   {
     id: 3,
     title: 'Yoga & Flexibility',
-    image: '/assets/images/class-3.jpg',
-    icon: '/assets/images/class-icon-3.png',
+    image: getImagePath('assets/images/class-3.jpg'),
+    icon: getImagePath('assets/images/class-icon-3.png'),
     time: '8:00 AM - 9:00 AM',
     trainer: 'David Rodriguez'
   },
   {
     id: 4,
     title: 'HIIT Training',
-    image: '/assets/images/class-4.jpg',
-    icon: '/assets/images/class-icon-4.png',
+    image: getImagePath('assets/images/class-4.jpg'),
+    icon: getImagePath('assets/images/class-icon-4.png'),
     time: '9:00 AM - 10:00 AM',
     trainer: 'Emma Wilson'
   }
@@ -169,7 +170,7 @@ const Classes = () => {
       id="classes"
       className="relative py-24 md:py-32 px-6 md:px-12 bg-club-dark"
       style={{
-        backgroundImage: 'url(/assets/images/classes-bg.png)',
+        backgroundImage: `url(${getImagePath('assets/images/classes-bg.png')})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
