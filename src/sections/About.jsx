@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Button, Typography, Container } from '@mui/material'
 import { fadeInUp, slideInLeft, slideInRight } from '../utils/motionVariants'
 import { getImagePath } from '../utils/imagePath'
+import EnquiryForm from '../components/EnquiryForm'
 
 const About = () => {
+  const [isFormOpen, setIsFormOpen] = useState(false)
+
   return (
     <section id="about" className="relative py-24 md:py-32 px-6 md:px-12 bg-club-dark overflow-hidden">
       <Container maxWidth="lg" className="container">
@@ -199,6 +202,9 @@ const About = () => {
           </motion.div>
         </div>
       </Container>
+
+      {/* Enquiry Form Modal */}
+      <EnquiryForm isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
     </section>
   )
 }

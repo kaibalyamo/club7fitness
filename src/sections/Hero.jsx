@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@mui/material'
 import { ChevronDown } from 'lucide-react'
 import { getImagePath } from '../utils/imagePath'
+import EnquiryForm from '../components/EnquiryForm'
 
 const Hero = () => {
   // Logo and video stay visible - no fade effects
+  const [isFormOpen, setIsFormOpen] = useState(false)
 
   // YouTube video ID - Gym/Fitness video
   const youtubeVideoId = 'pWifGjzL8aM' // Gym fitness video
@@ -146,6 +148,7 @@ const Hero = () => {
               <Button
                 variant="contained"
                 size="large"
+                onClick={() => setIsFormOpen(true)}
                 sx={{
                   px: 6,
                   py: 2,
@@ -169,6 +172,9 @@ const Hero = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* Enquiry Form Modal */}
+      <EnquiryForm isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
     </section>
   )
 }
