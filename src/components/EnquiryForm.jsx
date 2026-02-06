@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Button, TextField, RadioGroup, FormControlLabel, Radio, FormControl, FormLabel, Box, Typography } from '@mui/material'
+import { Button, TextField, FormControlLabel, Checkbox, FormControl, FormLabel, Box, Typography } from '@mui/material'
 import { X, Send } from 'lucide-react'
 import { getImagePath } from '../utils/imagePath'
 
@@ -66,7 +66,7 @@ const personalTrainingOptions = [
 const EnquiryForm = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
     name: '',
-    trainingProgram: '',
+    trainingPrograms: [],
     message: '',
   })
 
@@ -87,6 +87,30 @@ const EnquiryForm = ({ isOpen, onClose }) => {
     }
   }
 
+  const handleProgramChange = (programId) => {
+    setFormData(prev => {
+      const currentPrograms = prev.trainingPrograms || []
+      const isSelected = currentPrograms.includes(programId)
+      
+      const newPrograms = isSelected
+        ? currentPrograms.filter(id => id !== programId)
+        : [...currentPrograms, programId]
+      
+      return {
+        ...prev,
+        trainingPrograms: newPrograms
+      }
+    })
+    
+    // Clear error when user selects a program
+    if (errors.trainingPrograms) {
+      setErrors(prev => ({
+        ...prev,
+        trainingPrograms: ''
+      }))
+    }
+  }
+
   const validateForm = () => {
     const newErrors = {}
     
@@ -94,8 +118,8 @@ const EnquiryForm = ({ isOpen, onClose }) => {
       newErrors.name = 'Name is required'
     }
     
-    if (!formData.trainingProgram) {
-      newErrors.trainingProgram = 'Please select a training program'
+    if (!formData.trainingPrograms || formData.trainingPrograms.length === 0) {
+      newErrors.trainingPrograms = 'Please select at least one training program'
     }
 
     setErrors(newErrors)
@@ -110,13 +134,17 @@ const EnquiryForm = ({ isOpen, onClose }) => {
     }
 
     // Format WhatsApp message
-    const selectedProgram = personalTrainingOptions.find(p => p.id === formData.trainingProgram)
+    const selectedPrograms = personalTrainingOptions.filter(p => formData.trainingPrograms.includes(p.id))
+    const programsList = selectedPrograms.map(p => `• ${p.label}`).join('\n')
+    const programsDetails = selectedPrograms.map(p => `\n*${p.label}:*\n${p.details}`).join('\n\n')
+    
     const whatsappMessage = `*New Enquiry - Club 7 Fitness*
 
 *Name:* ${formData.name}
-*Training Program:* ${selectedProgram ? selectedProgram.label : formData.trainingProgram}
-${selectedProgram ? `*Program Details:* ${selectedProgram.details}` : ''}
-${formData.message ? `*Message:* ${formData.message}` : ''}
+*Selected Training Programs:*
+${programsList}
+${programsDetails}
+${formData.message ? `\n*Message:* ${formData.message}` : ''}
 
 _I'm interested in joining Club 7 Fitness!_`
 
@@ -130,7 +158,7 @@ _I'm interested in joining Club 7 Fitness!_`
     // Reset form
     setFormData({
       name: '',
-      trainingProgram: '',
+      trainingPrograms: [],
       message: '',
     })
     
@@ -259,7 +287,7 @@ _I'm interested in joining Club 7 Fitness!_`
                   >
                     <FormControl
                       component="fieldset"
-                      error={!!errors.trainingProgram}
+                      error={!!errors.trainingPrograms}
                       fullWidth
                     >
                       <FormLabel
@@ -272,66 +300,65 @@ _I'm interested in joining Club 7 Fitness!_`
                           },
                         }}
                       >
-                        Select Training Program <span style={{ color: '#ef4444' }}>*</span>
+                        Select Training Programs (Multiple Selection) <span style={{ color: '#ef4444' }}>*</span>
                       </FormLabel>
-                      <RadioGroup
-                        name="trainingProgram"
-                        value={formData.trainingProgram}
-                        onChange={handleChange}
-                        sx={{
-                          '& .MuiFormControlLabel-label': {
-                            color: '#ffffff',
-                            fontFamily: 'Poppins, sans-serif',
-                            width: '100%',
-                          },
-                          '& .MuiRadio-root': {
-                            color: 'rgba(59, 130, 246, 0.5)',
-                            '&.Mui-checked': {
-                              color: '#3b82f6',
-                            },
-                          },
-                        }}
-                      >
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          {personalTrainingOptions.map((option) => (
+                      <div className="flex flex-col gap-4">
+                        {/* First Row */}
+                        <div className="grid grid-cols-4 gap-4">
+                          {personalTrainingOptions.slice(0, 4).map((option) => (
                             <FormControlLabel
                               key={option.id}
-                              value={option.id}
-                              control={<Radio sx={{ position: 'absolute', top: 12, right: 12, zIndex: 2 }} />}
+                              control={
+                                <Checkbox
+                                  checked={formData.trainingPrograms.includes(option.id)}
+                                  onChange={() => handleProgramChange(option.id)}
+                                  sx={{
+                                    position: 'absolute',
+                                    top: 8,
+                                    right: 8,
+                                    zIndex: 2,
+                                    color: 'rgba(59, 130, 246, 0.5)',
+                                    '&.Mui-checked': {
+                                      color: '#3b82f6',
+                                    },
+                                  }}
+                                />
+                              }
                               label={
                                 <motion.div
-                                  className="relative w-full"
+                                  className="relative w-full cursor-pointer"
                                   whileHover={{ scale: 1.02 }}
                                   transition={{ duration: 0.2 }}
+                                  onClick={() => handleProgramChange(option.id)}
                                 >
                                   {/* Image */}
-                                  <div className="relative h-32 mb-3 rounded-lg overflow-hidden">
+                                  <div className="relative h-40 mb-2 rounded-lg overflow-hidden">
                                     <img
                                       src={getImagePath(option.image)}
                                       alt={option.label}
                                       className="w-full h-full object-cover"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-                                    <div className="absolute bottom-2 left-3 right-3">
-                                      <div className="font-bold text-white text-lg">{option.label}</div>
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+                                    <div className="absolute bottom-2 left-2 right-2">
+                                      <div className="font-bold text-white text-sm">{option.label}</div>
                                       <div className="text-xs text-club-steel">{option.description}</div>
                                     </div>
                                   </div>
                                   {/* Details */}
-                                  <div className="text-sm text-club-steel leading-relaxed px-1">
+                                  <div className="text-xs text-club-steel leading-relaxed line-clamp-3">
                                     {option.details}
                                   </div>
                                 </motion.div>
                               }
                               sx={{
-                                border: formData.trainingProgram === option.id
+                                border: formData.trainingPrograms.includes(option.id)
                                   ? '2px solid #3b82f6'
                                   : '2px solid rgba(59, 130, 246, 0.2)',
                                 borderRadius: '12px',
-                                p: 2,
+                                p: 1.5,
                                 m: 0,
                                 position: 'relative',
-                                backgroundColor: formData.trainingProgram === option.id
+                                backgroundColor: formData.trainingPrograms.includes(option.id)
                                   ? 'rgba(59, 130, 246, 0.1)'
                                   : 'rgba(26, 26, 26, 0.5)',
                                 '&:hover': {
@@ -343,13 +370,80 @@ _I'm interested in joining Club 7 Fitness!_`
                             />
                           ))}
                         </div>
-                      </RadioGroup>
-                      {errors.trainingProgram && (
+                        {/* Second Row */}
+                        <div className="grid grid-cols-4 gap-4">
+                          {personalTrainingOptions.slice(4, 8).map((option) => (
+                            <FormControlLabel
+                              key={option.id}
+                              control={
+                                <Checkbox
+                                  checked={formData.trainingPrograms.includes(option.id)}
+                                  onChange={() => handleProgramChange(option.id)}
+                                  sx={{
+                                    position: 'absolute',
+                                    top: 8,
+                                    right: 8,
+                                    zIndex: 2,
+                                    color: 'rgba(59, 130, 246, 0.5)',
+                                    '&.Mui-checked': {
+                                      color: '#3b82f6',
+                                    },
+                                  }}
+                                />
+                              }
+                              label={
+                                <motion.div
+                                  className="relative w-full cursor-pointer"
+                                  whileHover={{ scale: 1.02 }}
+                                  transition={{ duration: 0.2 }}
+                                  onClick={() => handleProgramChange(option.id)}
+                                >
+                                  {/* Image */}
+                                  <div className="relative h-40 mb-2 rounded-lg overflow-hidden">
+                                    <img
+                                      src={getImagePath(option.image)}
+                                      alt={option.label}
+                                      className="w-full h-full object-cover"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+                                    <div className="absolute bottom-2 left-2 right-2">
+                                      <div className="font-bold text-white text-sm">{option.label}</div>
+                                      <div className="text-xs text-club-steel">{option.description}</div>
+                                    </div>
+                                  </div>
+                                  {/* Details */}
+                                  <div className="text-xs text-club-steel leading-relaxed line-clamp-3">
+                                    {option.details}
+                                  </div>
+                                </motion.div>
+                              }
+                              sx={{
+                                border: formData.trainingPrograms.includes(option.id)
+                                  ? '2px solid #3b82f6'
+                                  : '2px solid rgba(59, 130, 246, 0.2)',
+                                borderRadius: '12px',
+                                p: 1.5,
+                                m: 0,
+                                position: 'relative',
+                                backgroundColor: formData.trainingPrograms.includes(option.id)
+                                  ? 'rgba(59, 130, 246, 0.1)'
+                                  : 'rgba(26, 26, 26, 0.5)',
+                                '&:hover': {
+                                  borderColor: '#3b82f6',
+                                  backgroundColor: 'rgba(59, 130, 246, 0.15)',
+                                },
+                                transition: 'all 0.3s ease',
+                              }}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                      {errors.trainingPrograms && (
                         <Typography
                           variant="caption"
                           sx={{ color: '#ef4444', mt: 1, display: 'block' }}
                         >
-                          {errors.trainingProgram}
+                          {errors.trainingPrograms}
                         </Typography>
                       )}
                     </FormControl>
