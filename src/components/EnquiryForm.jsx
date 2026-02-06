@@ -308,135 +308,147 @@ _I'm interested in joining Club 7 Fitness!_`
                         {/* First Row */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                           {personalTrainingOptions.slice(0, 4).map((option) => (
-                            <FormControlLabel
+                            <motion.div
                               key={option.id}
-                              control={
-                                <Checkbox
-                                  checked={formData.trainingPrograms.includes(option.id)}
-                                  onChange={() => handleProgramChange(option.id)}
-                                  sx={{
-                                    position: 'absolute',
-                                    top: 8,
-                                    right: 8,
-                                    zIndex: 2,
-                                    color: 'rgba(59, 130, 246, 0.5)',
-                                    '&.Mui-checked': {
-                                      color: '#3b82f6',
-                                    },
-                                  }}
-                                />
-                              }
-                              label={
-                                <motion.div
-                                  className="relative w-full cursor-pointer"
-                                  whileHover={{ scale: 1.02 }}
-                                  transition={{ duration: 0.2 }}
-                                  onClick={() => handleProgramChange(option.id)}
-                                >
-                                  {/* Image */}
-                                  <div className="relative h-32 sm:h-36 md:h-40 mb-2 rounded-lg overflow-hidden">
-                                    <img
-                                      src={getImagePath(option.image)}
-                                      alt={option.label}
-                                      className="w-full h-full object-cover"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
-                                    <div className="absolute bottom-2 left-2 right-2">
-                                      <div className="font-bold text-white text-xs sm:text-sm md:text-base">{option.label}</div>
-                                      <div className="text-xs text-club-steel">{option.description}</div>
-                                    </div>
-                                  </div>
-                                  {/* Details */}
-                                  <div className="text-xs sm:text-sm text-club-steel leading-relaxed line-clamp-2 sm:line-clamp-3">
-                                    {option.details}
-                                  </div>
-                                </motion.div>
-                              }
-                              sx={{
+                              onClick={() => handleProgramChange(option.id)}
+                              className="relative cursor-pointer"
+                              whileHover={{ scale: 1.02 }}
+                              transition={{ duration: 0.2 }}
+                              style={{
                                 border: formData.trainingPrograms.includes(option.id)
                                   ? '2px solid #3b82f6'
                                   : '2px solid rgba(59, 130, 246, 0.2)',
                                 borderRadius: '12px',
-                                p: 1.5,
-                                m: 0,
-                                position: 'relative',
+                                padding: '12px',
+                                margin: 0,
                                 backgroundColor: formData.trainingPrograms.includes(option.id)
                                   ? 'rgba(59, 130, 246, 0.1)'
                                   : 'rgba(26, 26, 26, 0.5)',
-                                '&:hover': {
-                                  borderColor: '#3b82f6',
-                                  backgroundColor: 'rgba(59, 130, 246, 0.15)',
-                                },
                                 transition: 'all 0.3s ease',
                               }}
-                            />
+                              onMouseEnter={(e) => {
+                                if (!formData.trainingPrograms.includes(option.id)) {
+                                  e.currentTarget.style.borderColor = '#3b82f6'
+                                  e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.15)'
+                                }
+                              }}
+                              onMouseLeave={(e) => {
+                                if (!formData.trainingPrograms.includes(option.id)) {
+                                  e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.2)'
+                                  e.currentTarget.style.backgroundColor = 'rgba(26, 26, 26, 0.5)'
+                                }
+                              }}
+                            >
+                              {/* Checkbox */}
+                              <Checkbox
+                                checked={formData.trainingPrograms.includes(option.id)}
+                                onChange={() => handleProgramChange(option.id)}
+                                onClick={(e) => e.stopPropagation()}
+                                sx={{
+                                  position: 'absolute',
+                                  top: 8,
+                                  right: 8,
+                                  zIndex: 2,
+                                  color: 'rgba(59, 130, 246, 0.5)',
+                                  '&.Mui-checked': {
+                                    color: '#3b82f6',
+                                  },
+                                }}
+                              />
+                              {/* Card Content */}
+                              <div className="relative w-full">
+                                {/* Image */}
+                                <div className="relative h-32 sm:h-36 md:h-40 mb-2 rounded-lg overflow-hidden">
+                                  <img
+                                    src={getImagePath(option.image)}
+                                    alt={option.label}
+                                    className="w-full h-full object-cover"
+                                  />
+                                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+                                  <div className="absolute bottom-2 left-2 right-2">
+                                    <div className="font-bold text-white text-xs sm:text-sm md:text-base">{option.label}</div>
+                                    <div className="text-xs text-club-steel">{option.description}</div>
+                                  </div>
+                                </div>
+                                {/* Details */}
+                                <div className="text-xs sm:text-sm text-club-steel leading-relaxed line-clamp-2 sm:line-clamp-3">
+                                  {option.details}
+                                </div>
+                              </div>
+                            </motion.div>
                           ))}
                         </div>
                         {/* Second Row */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                           {personalTrainingOptions.slice(4, 8).map((option) => (
-                            <FormControlLabel
+                            <motion.div
                               key={option.id}
-                              control={
-                                <Checkbox
-                                  checked={formData.trainingPrograms.includes(option.id)}
-                                  onChange={() => handleProgramChange(option.id)}
-                                  sx={{
-                                    position: 'absolute',
-                                    top: 8,
-                                    right: 8,
-                                    zIndex: 2,
-                                    color: 'rgba(59, 130, 246, 0.5)',
-                                    '&.Mui-checked': {
-                                      color: '#3b82f6',
-                                    },
-                                  }}
-                                />
-                              }
-                              label={
-                                <motion.div
-                                  className="relative w-full cursor-pointer"
-                                  whileHover={{ scale: 1.02 }}
-                                  transition={{ duration: 0.2 }}
-                                  onClick={() => handleProgramChange(option.id)}
-                                >
-                                  {/* Image */}
-                                  <div className="relative h-32 sm:h-36 md:h-40 mb-2 rounded-lg overflow-hidden">
-                                    <img
-                                      src={getImagePath(option.image)}
-                                      alt={option.label}
-                                      className="w-full h-full object-cover"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
-                                    <div className="absolute bottom-2 left-2 right-2">
-                                      <div className="font-bold text-white text-xs sm:text-sm md:text-base">{option.label}</div>
-                                      <div className="text-xs text-club-steel">{option.description}</div>
-                                    </div>
-                                  </div>
-                                  {/* Details */}
-                                  <div className="text-xs sm:text-sm text-club-steel leading-relaxed line-clamp-2 sm:line-clamp-3">
-                                    {option.details}
-                                  </div>
-                                </motion.div>
-                              }
-                              sx={{
+                              onClick={() => handleProgramChange(option.id)}
+                              className="relative cursor-pointer"
+                              whileHover={{ scale: 1.02 }}
+                              transition={{ duration: 0.2 }}
+                              style={{
                                 border: formData.trainingPrograms.includes(option.id)
                                   ? '2px solid #3b82f6'
                                   : '2px solid rgba(59, 130, 246, 0.2)',
                                 borderRadius: '12px',
-                                p: 1.5,
-                                m: 0,
-                                position: 'relative',
+                                padding: '12px',
+                                margin: 0,
                                 backgroundColor: formData.trainingPrograms.includes(option.id)
                                   ? 'rgba(59, 130, 246, 0.1)'
                                   : 'rgba(26, 26, 26, 0.5)',
-                                '&:hover': {
-                                  borderColor: '#3b82f6',
-                                  backgroundColor: 'rgba(59, 130, 246, 0.15)',
-                                },
                                 transition: 'all 0.3s ease',
                               }}
-                            />
+                              onMouseEnter={(e) => {
+                                if (!formData.trainingPrograms.includes(option.id)) {
+                                  e.currentTarget.style.borderColor = '#3b82f6'
+                                  e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.15)'
+                                }
+                              }}
+                              onMouseLeave={(e) => {
+                                if (!formData.trainingPrograms.includes(option.id)) {
+                                  e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.2)'
+                                  e.currentTarget.style.backgroundColor = 'rgba(26, 26, 26, 0.5)'
+                                }
+                              }}
+                            >
+                              {/* Checkbox */}
+                              <Checkbox
+                                checked={formData.trainingPrograms.includes(option.id)}
+                                onChange={() => handleProgramChange(option.id)}
+                                onClick={(e) => e.stopPropagation()}
+                                sx={{
+                                  position: 'absolute',
+                                  top: 8,
+                                  right: 8,
+                                  zIndex: 2,
+                                  color: 'rgba(59, 130, 246, 0.5)',
+                                  '&.Mui-checked': {
+                                    color: '#3b82f6',
+                                  },
+                                }}
+                              />
+                              {/* Card Content */}
+                              <div className="relative w-full">
+                                {/* Image */}
+                                <div className="relative h-32 sm:h-36 md:h-40 mb-2 rounded-lg overflow-hidden">
+                                  <img
+                                    src={getImagePath(option.image)}
+                                    alt={option.label}
+                                    className="w-full h-full object-cover"
+                                  />
+                                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+                                  <div className="absolute bottom-2 left-2 right-2">
+                                    <div className="font-bold text-white text-xs sm:text-sm md:text-base">{option.label}</div>
+                                    <div className="text-xs text-club-steel">{option.description}</div>
+                                  </div>
+                                </div>
+                                {/* Details */}
+                                <div className="text-xs sm:text-sm text-club-steel leading-relaxed line-clamp-2 sm:line-clamp-3">
+                                  {option.details}
+                                </div>
+                              </div>
+                            </motion.div>
                           ))}
                         </div>
                       </div>
