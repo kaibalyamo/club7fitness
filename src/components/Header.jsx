@@ -74,7 +74,7 @@ const Header = () => {
         pointerEvents: isVisible ? 'auto' : 'none',
       }}
     >
-      <nav className="max-w-7xl mx-auto px-0 md:px-12 py-4">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-3 sm:py-4">
         <div className="flex items-center justify-center">
           {/* Desktop Navigation */}
           <motion.div

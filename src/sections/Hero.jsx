@@ -103,7 +103,7 @@ const Hero = () => {
           >
             {/* Main headline */}
             <motion.h1
-              className="text-5xl md:text-7xl lg:text-8xl font-black text-center mb-6 tracking-tight font-display"
+              className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-center mb-4 sm:mb-6 tracking-tight font-display"
             >
               <motion.span 
                 className="block text-balance text-white mb-2"
