@@ -45,7 +45,7 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-club-dark/20 z-10"></div>
 
         {/* Logo Image prominently displayed over video */}
-        <div className="absolute inset-0 flex items-center justify-center z-20 px-4">
+        <div className="absolute inset-0 flex items-center justify-center z-20 px-4 sm:px-6 md:px-8">
           <motion.img
             src={getImagePath('assets/images/rtyu45mm.png')}
             alt="Club 7 Fitness"
@@ -55,7 +55,7 @@ const Hero = () => {
               duration: 1, 
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="w-[90vw] sm:w-[80vw] md:w-auto max-w-[85vw] sm:max-w-4xl md:max-w-5xl lg:max-w-6xl h-auto object-contain"
+            className="w-[85vw] sm:w-[75vw] md:w-auto max-w-[85vw] sm:max-w-4xl md:max-w-5xl lg:max-w-6xl h-auto object-contain"
             style={{
               filter: 'drop-shadow(0 10px 40px rgba(0, 0, 0, 0.8))',
             }}
