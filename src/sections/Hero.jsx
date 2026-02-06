@@ -28,13 +28,12 @@ const Hero = () => {
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
-            className="absolute inset-0 w-full h-full"
+            className="absolute inset-0 w-full h-full scale-[1.1] md:scale-[1.25]"
             style={{
               width: '100vw',
               height: '100vh',
               minWidth: '100%',
               minHeight: '100%',
-              transform: 'scale(1.25)',
               transformOrigin: 'center center',
               pointerEvents: 'none',
               objectFit: 'cover',
@@ -46,7 +45,7 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-club-dark/20 z-10"></div>
 
         {/* Logo Image prominently displayed over video */}
-        <div className="absolute inset-0 flex items-center justify-center z-20">
+        <div className="absolute inset-0 flex items-center justify-center z-20 px-4">
           <motion.img
             src={getImagePath('assets/images/rtyu45mm.png')}
             alt="Club 7 Fitness"
@@ -56,7 +55,7 @@ const Hero = () => {
               duration: 1, 
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="max-w-4xl md:max-w-5xl lg:max-w-6xl w-auto h-auto object-contain"
+            className="w-[90vw] sm:w-[80vw] md:w-auto max-w-[85vw] sm:max-w-4xl md:max-w-5xl lg:max-w-6xl h-auto object-contain"
             style={{
               filter: 'drop-shadow(0 10px 40px rgba(0, 0, 0, 0.8))',
             }}
@@ -68,7 +67,7 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 z-30"
+          className="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 z-30"
         >
           <motion.div
             animate={{ y: [0, 15, 0] }}
